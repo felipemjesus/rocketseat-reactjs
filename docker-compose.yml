@@ -1,0 +1,11 @@
+services:
+  app:
+    image: node:20.17.0
+    container_name: "rocketseat-reactjs"
+    ports:
+      - "9001:9001"
+      - "3001:3001"
+    volumes:
+      - .:/app
+    working_dir: /app
+    command: bash -c "npm start"
