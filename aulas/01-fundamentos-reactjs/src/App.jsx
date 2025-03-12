@@ -21,14 +21,14 @@ const posts = [
   {
     id: 2,
     author: {
-      avatarUrl: 'https://github.com/cicranodasilva.png',
+      avatarUrl: 'https://github.com/xpto.png',
       name: 'Cicrano da Silva',
       role: 'Mobile Developer'
     },
     content: [
-      { type: 'paragraph', content: 'Fala galeraa 👋' },
-      { type: 'paragraph', content: 'Acabei de subir mais um projeto no meu portifólio. É um projeto que fiz no NLW Return, evento da Rocketseat. O nome do projeto é DoctorCare 🚀' },
-      { type: 'link', content: 'jane.design/doctorcare' },
+      { type: 'paragraph', content: 'Fala pessoal 👋' },
+      { type: 'paragraph', content: 'Acabei de alterar mais um projeto no meu portifólio. É um projeto que fiz no NLW Connect, evento da Rocketseat. O nome do projeto é FullCare 🚀' },
+      { type: 'link', content: 'xpto.mobile/fullcare' },
     ],
     publishedAt: new Date('2025-03-01 18:30:00')
   }
