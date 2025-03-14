@@ -16,13 +16,20 @@ interface Content {
     content: string
 }
 
-interface PostProps {
+export interface PostType {
+    id: number
     author: Author
     publishedAt: Date
     content: Content[]
 }
 
-export function Post({ author, publishedAt, content }: PostProps) {
+interface PostProps {
+    post: PostType
+}
+
+export function Post({ post }: PostProps) {
+    const { author, publishedAt, content } = post
+
     const [comments, setComments] = useState([
         'Muito bom Devon, parabéns!! 👏👏'
     ])
