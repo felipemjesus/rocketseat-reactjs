@@ -19,7 +19,7 @@ main {
     border-radius: 8px;
     border: 1px solid var(--gray-700);
     background: var(--gray-500);
-    color: var(--gray-300);
+    color: var(--gray-100);
 }
 
 .todoForm input:focus {
@@ -165,6 +165,11 @@ main {
 .todo .todoList .todoItem span {
     flex: 1;
     word-break: break-all;
+}
+
+.todo .todoList .todoItem span.finished {
+    text-decoration: line-through;
+    color: var(--gray-300);
 }
 
 .todo .todoList .todoItem button {
