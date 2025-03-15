@@ -1,0 +1,112 @@
+main {
+    display: flex;
+    flex-direction: column;
+    gap: 4rem;
+    width: 52rem;
+    margin: 0 auto;
+    padding: 0 2rem 2rem 2rem;
+}
+
+.todoForm {
+    display: flex;
+    gap: 1rem;
+    margin-top: calc(0px - 1.5rem - 6px);
+}
+
+.todoForm input {
+    flex: 1;
+    padding: 1rem;
+    border-radius: 8px;
+    border: 1px solid var(--gray-700);
+    background: var(--gray-500);
+    color: var(--gray-300);
+}
+
+.todoForm input:focus {
+    border: 1px solid var(--purple-dark);
+    outline: none;
+    box-shadow: 0 0 0 2px var(--purple-dark);
+}
+
+.todoForm button {
+    padding: 1rem;
+    border-radius: 8px;
+    border: 0;
+    background-color: var(--blue-dark);
+    color: var(--gray-100);
+    font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    transition: background-color 0.1s;
+}
+
+.todoForm button:hover {
+    background: var(--blue-light);
+}
+
+.todoForm button svg {
+    width: 1.5rem;
+    height: 1.5rem;
+    margin-left: 0.5rem;
+    line-height: inherit;
+}
+
+.todoList header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.todoList header .createdTasks {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--blue-light);
+    font-weight: bold;
+}
+
+.todoList header .createdTasks span {
+    background: var(--gray-400);
+    color: var(--gray-100);
+    padding: 0.125rem 0.5rem;
+    border-radius: 9999px;
+}
+
+.todoList header .finishedTasks {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--purple-light);
+    font-weight: bold;
+}
+
+.todoList header .finishedTasks span {
+    background: var(--gray-400);
+    color: var(--gray-100);
+    padding: 0.125rem 0.5rem;
+    border-radius: 9999px;
+}
+
+.todoList .emptyState {
+    margin-top: 4rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    color: var(--gray-300);
+}
+
+.todoList .emptyState svg {
+    width: 4rem;
+    height: 4rem;
+}
+
+.todoList .emptyState p:nth-child(2) {
+    font-weight: bold;
+    color: var(--gray-100);
+}
+
+.todoList .emptyState p:last-child {
+    color: var(--gray-300);
+}

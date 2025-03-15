@@ -1,0 +1,26 @@
+.header {
+    background-color: var(--gray-700);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem 0;
+    border-bottom: 1px solid var(--gray-600);
+    height: 200px;
+}
+
+
+.header h1 {
+    font-size: 3rem;
+}
+
+.header h1 img {
+    margin-right: 0.75rem;
+}
+
+.header h1 .to {
+    color: var(--blue-light);
+}
+
+.header h1 .do {
+    color: var(--purple-light);
+}
