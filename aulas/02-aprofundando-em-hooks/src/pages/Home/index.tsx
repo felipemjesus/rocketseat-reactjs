@@ -5,7 +5,7 @@ import {
   StartCountdownButton,
   StopCountdownButton,
 } from './styles'
-import { useEffect, useState } from 'react'
+import { createContext, useEffect, useState } from 'react'
 import { differenceInSeconds } from 'date-fns'
 import { NewCycleForm } from './components/NewCycleForm'
 import { Countdown } from './components/Countdown'
@@ -19,11 +19,37 @@ interface Cycle {
   finishedDate?: Date
 }
 
+interface ClyclesContextType {
+  activeCycle: Cycle | undefined
+  activeCycleId: string | null
+  markCurrentCycleAsFinished: () => void
+}
+
+export const CyclesContext = createContext({} as ClyclesContextType)
+
 export function Home() {
   const [cycles, setCycles] = useState<Cycle[]>([])
   const [activeCycleId, setActiveCycleId] = useState<string | null>(null)
 
   const activeCycle = cycles.find((cycle) => cycle.id === activeCycleId)
+
+  function markCurrentCycleAsFinished() {
+    if (!activeCycle) {
+      return
+    }
+
+    setCycles((state) => {
+      return state.map((cycle) => {
+        if (cycle.id === activeCycle.id) {
+          return { ...cycle, finishedDate: new Date() }
+        } else {
+          return cycle
+        }
+      })
+    })
+
+    setActiveCycleId(null)
+  }
 
   function handleCreateNewCycle(data: NewCycleFormData) {
     const newCycle: Cycle = {
@@ -54,32 +80,22 @@ export function Home() {
     setAmountSecondsPassed(0)
   }
 
-  const currentSeconds = totalSeconds - amountSecondsPassed
-
-  const minutesAmount = Math.floor(currentSeconds / 60)
-  const secondsAmount = currentSeconds % 60
-
-  const minutes = String(minutesAmount).padStart(2, '0')
-  const seconds = String(secondsAmount).padStart(2, '0')
-
-  useEffect(() => {
-    if (activeCycle) {
-      document.title = `${minutes}:${seconds}`
-    }
-  }, [minutes, seconds, activeCycle])
-
   const task = watch('task')
   const isSubmitDisabled = !task
 
   return (
     <HomeContainer>
       <form onSubmit={handleSubmit(handleCreateNewCycle)} action="">
-        <NewCycleForm />
-
-        <Countdown
-          activeCycle={activeCycle}
-          setCycles={setCycles}
-        />
+        <CyclesContext.Provider
+          value={{
+            activeCycle,
+            activeCycleId,
+            markCurrentCycleAsFinished,
+          }}
+        >
+          <NewCycleForm />
+          <Countdown />
+        </CyclesContext.Provider>
 
         {activeCycle
           ? (
