@@ -42,46 +42,48 @@ export function CyclesContextProvider({
 }: CyclesContextProviderProps) {
   const [cyclesState, dispatch] = useReducer(
     (state: CyclesState, action: any) => {
-      if (action.type === 'ADD_NEW_CYCLE') {
-        return {
-          ...state,
-          cycles: [...state.cycles, action.payload.newCycle],
-          activeCycleId: action.payload.newCycle.id,
-          amountSecondsPassed: 0,
-        }
+      switch (action.type) {
+        case 'ADD_NEW_CYCLE':
+          return {
+            ...state,
+            cycles: [...state.cycles, action.payload.newCycle],
+            activeCycleId: action.payload.newCycle.id,
+            amountSecondsPassed: 0,
+          }
+        case 'INTERRUPT_CYCLE':
+          return {
+            ...state,
+            cycles: state.cycles.map((cycle) => {
+              if (cycle.id === action.payload.activeCycleId) {
+                return { ...cycle, interruptedDate: new Date() }
+              } else {
+                return cycle
+              }
+            }),
+            activeCycleId: null,
+            amountSecondsPassed: 0,
+          }
+        case 'MARK_CURRENT_CYCLE_AS_FINISHED':
+          return {
+            ...state,
+            cycles: state.cycles.map((cycle) => {
+              if (cycle.id === action.payload.activeCycleId) {
+                return { ...cycle, finishedDate: new Date() }
+              } else {
+                return cycle
+              }
+            }),
+            activeCycleId: null,
+            amountSecondsPassed: 0,
+          }
+        case 'SET_SECONDS_PASSED':
+          return {
+            ...state,
+            amountSecondsPassed: action.payload.seconds,
+          }
+        default:
+          return state
       }
-
-      if (action.type === 'INTERRUPT_CYCLE') {
-        return {
-          ...state,
-          cycles: state.cycles.map((cycle) => {
-            if (cycle.id === action.payload.activeCycleId) {
-              return { ...cycle, interruptedDate: new Date() }
-            } else {
-              return cycle
-            }
-          }),
-          activeCycleId: null,
-          amountSecondsPassed: 0,
-        }
-      }
-
-      if (action.type === 'MARK_CURRENT_CYCLE_AS_FINISHED') {
-        return {
-          ...state,
-          cycles: state.cycles.map((cycle) => {
-            if (cycle.id === action.payload.activeCycleId) {
-              return { ...cycle, finishedDate: new Date() }
-            } else {
-              return cycle
-            }
-          }),
-          activeCycleId: null,
-          amountSecondsPassed: 0,
-        }
-      }
-
-      return state
     },
     {
       cycles: [],
@@ -95,7 +97,12 @@ export function CyclesContextProvider({
   const activeCycle = cycles.find((cycle) => cycle.id === activeCycleId)
 
   function setSecondsPassed(seconds: number) {
-    setAmountSecondsPassed(seconds)
+    dispatch({
+      type: 'SET_SECONDS_PASSED',
+      payload: {
+        seconds,
+      },
+    })
   }
 
   function markCurrentCycleAsFinished() {
@@ -119,7 +126,6 @@ export function CyclesContextProvider({
       startDate: new Date(),
     }
 
-    // setCycles((state) => [...state, newCycle])
     dispatch({
       type: 'ADD_NEW_CYCLE',
       payload: {
@@ -129,24 +135,12 @@ export function CyclesContextProvider({
   }
 
   function interruptCurrentCycle() {
-    // setCycles((state) => {
-    //   return state.map((cycle) => {
-    //     if (cycle.id === activeCycleId) {
-    //       return { ...cycle, interruptedDate: new Date() }
-    //     } else {
-    //       return cycle
-    //     }
-    //   })
-    // })
     dispatch({
       type: 'INTERRUPT_CYCLE',
       payload: {
         activeCycleId,
       },
     })
-
-    setActiveCycleId(null)
-    setAmountSecondsPassed(0)
   }
 
   return (
