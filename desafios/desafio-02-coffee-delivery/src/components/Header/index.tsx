@@ -20,7 +20,7 @@ export function Header() {
       <div className="actions">
         <button className="location">
           <MapPin weight="fill" />
-          <span className="location-text">Porto Alegre, RS</span>
+          <span className="location-text">Brasília, DF</span>
         </button>
         <button
           className="cart"
