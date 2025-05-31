@@ -1,0 +1,71 @@
+.dados {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+.dados h2 {
+    color: var(--base-subtitle);
+    font-size: 1.125rem;
+    font-weight: 400;
+}
+.dados .endereco {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    background-color: var(--base-card);
+    padding: 2.5rem;
+    border-radius: 6px;
+}
+.dados .pagamento {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    background-color: var(--base-card);
+    padding: 2.5rem;
+    border-radius: 6px;
+}
+.dados .input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+.dados .input-group label {
+    color: var(--base-label);
+    font-size: 0.875rem;
+}
+.dados .input-group input {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid var(--base-button);
+    border-radius: 6px;
+    background-color: var(--base-input);
+    color: var(--base-text);
+    font-size: 0.875rem;
+}
+.dados .input-group input:focus {
+    border-color: var(--yellow-dark);
+    outline: none;
+}
+.dados .input-group input::placeholder {
+    color: var(--base-label);
+}
+.dados .input-group input[type="number"] {
+    -moz-appearance: textfield;
+}
+.dados .input-group input[type="number"]::-webkit-inner-spin-button,
+.dados .input-group input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+.dados .input-group input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+}
+.dados .input-group input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+}
+.dados .input-group input[type="text"] {
+    text-transform: uppercase;
+}
+.dados .input-group input[type="text"]::placeholder {
+    text-transform: uppercase;
+}

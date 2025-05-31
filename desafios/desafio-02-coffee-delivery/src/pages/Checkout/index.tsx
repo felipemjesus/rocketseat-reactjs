@@ -1,8 +1,12 @@
+import { Dados } from './components/Dados'
+import { Itens } from './components/Itens'
+import './styles.css'
+
 export function Checkout() {
   return (
-    <div>
-      <h1>Checkout</h1>
-      <p>Finalize seu pedido</p>
+    <div className="checkout">
+      <Dados />
+      <Itens />
     </div>
   )
 }

@@ -1,11 +1,12 @@
-import { useContext } from 'react'
+import { useContext, useState } from 'react'
 import { CoffeeContext } from '../../../../contexts/CoffeeContext'
 import './styles.css'
 import { DynamicImage } from '../../../../components/DynamicImage'
 import { ShoppingCart } from 'phosphor-react'
 
 export function CoffeeList() {
-  const { coffees } = useContext(CoffeeContext)
+  const { coffees, addNewCoffee } = useContext(CoffeeContext)
+  const [quantity, setQuantity] = useState(1)
 
   return (
     <div className="coffee-list">
@@ -37,16 +38,19 @@ export function CoffeeList() {
                   defaultValue="1"
                   className="quantity"
                   onChange={(e) => {
-                    const value = parseInt(e.target.value, 10)
+                    let value = parseInt(e.target.value, 10)
                     if (value < 1) {
+                      value = 1
                       e.target.value = '1'
                     }
+                    setQuantity(value)
                   }}
                 />
                 <button
                   onClick={() => {
-                  // Implement add to cart functionality here
-                    console.log(`Adicionando ${coffee.name} ao carrinho`)
+                    coffee.quantity = quantity
+                    addNewCoffee(coffee)
+                    setQuantity(1)
                   }}
                 >
                   <ShoppingCart weight="fill" />
