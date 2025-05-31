@@ -1,17 +1,18 @@
-import { BrowserRouter } from 'react-router-dom'
-import { Router } from './Router'
-import './App.css'
+import { Outlet } from 'react-router-dom'
 import { DefaultLayout } from './layouts/DefaultLayout'
 import { CoffeeContextProvider } from './contexts/CoffeeContext'
+import { Header } from './components/Header'
+import './App.css'
 
 function App() {
   return (
     <DefaultLayout>
-      <BrowserRouter>
-        <CoffeeContextProvider>
-          <Router />
-        </CoffeeContextProvider>
-      </BrowserRouter>
+      <CoffeeContextProvider>
+        <Header />
+        <main>
+          <Outlet />
+        </main>
+      </CoffeeContextProvider>
     </DefaultLayout>
   )
 }

@@ -1,12 +1,14 @@
 .dados {
     display: flex;
     flex-direction: column;
-    gap: 2rem;
+    gap: 1rem;
+    width: 100vw;
 }
 .dados h2 {
     color: var(--base-subtitle);
     font-size: 1.125rem;
-    font-weight: 400;
+    font-weight: 700;
+    font-family: 'Baloo 2', sans-serif;
 }
 .dados .endereco {
     display: flex;

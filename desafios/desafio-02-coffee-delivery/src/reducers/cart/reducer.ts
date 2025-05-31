@@ -49,9 +49,7 @@ export function cartReducer(state: CartState, action: any) {
         } else {
           draft.items.push(newCooffee)
         }
-        draft.quantityItems = draft.items.reduce(
-          (total, coffee) => total + coffee.quantity, 0,
-        )
+        draft.quantityItems = draft.items.length
       })
     case ActionTypes.ADD_NEW_ADDRESS:
       return produce(state, (draft) => {

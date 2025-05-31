@@ -8,9 +8,10 @@ header {
     padding: 2rem 10rem;
 }
 
-header img {
+header .logo {
     width: 6.375rem;
     height: 2.5rem;
+    cursor: pointer;
 }
 
 header .actions {
