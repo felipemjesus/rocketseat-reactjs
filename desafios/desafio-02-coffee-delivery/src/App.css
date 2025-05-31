@@ -46,3 +46,7 @@ div#root {
     min-height: 100vh;
     overflow: hidden;
 }
+
+main {
+    padding: 2rem 10rem;
+}
