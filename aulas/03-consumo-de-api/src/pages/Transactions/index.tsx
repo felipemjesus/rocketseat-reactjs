@@ -23,7 +23,7 @@ export function Transactions() {
                 <td width="50%">{transaction.description}</td>
                 <td>
                   <PriceHighlight variant={transaction.type}>
-                    {transaction.type === 'outcome' ? `- R$ ${transaction.price.toFixed(2)}` : `R$ ${transaction.price.toFixed(2)}`}
+                    {transaction.type === 'outcome' ? `- R$ ${transaction.price.toFixed(2).replace('.', ',')}` : `R$ ${transaction.price.toFixed(2).replace('.', ',')}`}
                   </PriceHighlight>
                 </td>
                 <td>{transaction.category}</td>
