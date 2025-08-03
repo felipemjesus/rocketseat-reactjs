@@ -6,7 +6,7 @@
       "type": "income",
       "category": "Venda",
       "price": 12000,
-      "createdAt": "2022-08-25T10:00:00.000Z"
+      "createdAt": "2025-07-25T10:00:00.000Z"
     },
     {
       "id": "2",
@@ -14,7 +14,23 @@
       "type": "outcome",
       "category": "Alimentação",
       "price": 50,
-      "createdAt": "2022-08-26T10:00:00.000Z"
+      "createdAt": "2025-07-26T10:00:00.000Z"
+    },
+    {
+      "id": "83a5",
+      "description": "Criação do UI/UX",
+      "price": 5765,
+      "category": "Venda",
+      "type": "income",
+      "createdAt": "2025-08-03T16:40:38.217Z"
+    },
+    {
+      "id": "e948",
+      "description": "Iogurte de banana",
+      "price": 12,
+      "category": "Alimentação",
+      "type": "outcome",
+      "createdAt": "2025-08-03T17:59:13.575Z"
     }
   ]
 }
