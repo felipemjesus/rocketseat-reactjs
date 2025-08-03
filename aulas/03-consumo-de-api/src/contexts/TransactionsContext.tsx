@@ -62,7 +62,7 @@ const [transactions, setTransactions] = useState<Transaction[]>([]);
 
   useEffect(() => {
     fetchTransactions();
-  }, []);
+  }, [fetchTransactions]);
 
   return (
     <TransactionsContext.Provider
