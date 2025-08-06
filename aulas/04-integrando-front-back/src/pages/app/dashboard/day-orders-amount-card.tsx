@@ -3,7 +3,7 @@ import { Utensils } from "lucide-react";
 
 export function DayOrdersAmountCard() {
   return (
-    <Card>
+    <Card className="bg-background">
       <CardHeader className="flex items-center justify-between pb-2">
         <CardTitle className="text-base font-semibold">
           Pedidos (dia)

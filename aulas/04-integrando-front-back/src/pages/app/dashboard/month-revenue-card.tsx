@@ -3,7 +3,7 @@ import { DollarSign } from "lucide-react";
 
 export function MonthRevenueCard() {
   return (
-    <Card>
+    <Card className="bg-background">
       <CardHeader className="flex items-center justify-between pb-2">
         <CardTitle className="text-base font-semibold">
           Receita total (mês)

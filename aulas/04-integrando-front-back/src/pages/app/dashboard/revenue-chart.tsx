@@ -1,5 +1,5 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { ResponsiveContainer, LineChart, XAxis, YAxis, Line, Tooltip } from "recharts"
+import { ResponsiveContainer, LineChart, XAxis, YAxis, Line, CartesianGrid } from "recharts"
 import colors from "tailwindcss/colors";
 
 const data = [
@@ -14,7 +14,7 @@ const data = [
 
 export function RevenueChart() {
   return (
-    <Card className="col-span-6">
+    <Card className="col-span-6 bg-background">
       <CardHeader className="flex items-center justify-between pb-8">
         <div className="space-y-1">
           <CardTitle className="text-base font-semibold">
@@ -29,21 +29,15 @@ export function RevenueChart() {
         <ResponsiveContainer width="100%" height={240}>
           <LineChart
             style={{ fontSize: 12 }}
-            margin={{ top: 5, right: 20, left: 10, bottom: 5 }}
             data={data}
           >
-            <Line
-              dataKey="revenue"
-              type="linear"
-              strokeWidth={2}
-              stroke={colors.violet['500']}
-            />
             <XAxis
               dataKey="date"
               axisLine={false}
               tickLine={false}
               dy={16}
             />
+
             <YAxis
               stroke="#888"
               axisLine={false}
@@ -56,7 +50,18 @@ export function RevenueChart() {
                 })
               }
             />
-            <Tooltip />
+
+            <CartesianGrid
+              vertical={false}
+              className="stroke-muted"
+            />
+
+            <Line
+              dataKey="revenue"
+              type="linear"
+              strokeWidth={2}
+              stroke={colors.violet['500']}
+            />
           </LineChart>
         </ResponsiveContainer>
       </CardContent>
