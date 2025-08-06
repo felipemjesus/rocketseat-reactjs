@@ -1,0 +1,26 @@
+services:
+  postgres:
+    image: bitnami/postgresql:latest
+    ports:
+      - '5433:5432'
+    environment:
+      - POSTGRES_USER=docker
+      - POSTGRES_PASSWORD=docker
+      - POSTGRES_DB=pizzashop
+    volumes:
+      - postgres_data:/bitnami/postgresql
+
+  api:
+    image: oven/bun:latest
+    container_name: "rocketseat-pizzashop-api"
+    ports:
+      - '3344:3333'
+    volumes:
+      - .:/app
+    working_dir: /app
+    command: bash -c "bun index.js"
+    depends_on:
+      - postgres
+
+volumes:
+  postgres_data:
