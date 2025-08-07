@@ -16,7 +16,8 @@ export function AccountMenu() {
     isLoading: isLoadingProfile
   } = useQuery({
     queryKey: ['profile'],
-    queryFn: getProfile
+    queryFn: getProfile,
+    staleTime: Infinity
   })
 
   const {
@@ -24,7 +25,8 @@ export function AccountMenu() {
     isLoading: isLoadingManagedRestaurant
   } = useQuery({
     queryKey: ['managed-restaurant'],
-    queryFn: getManagedRestaurant
+    queryFn: getManagedRestaurant,
+    staleTime: Infinity
   })
 
   return (
