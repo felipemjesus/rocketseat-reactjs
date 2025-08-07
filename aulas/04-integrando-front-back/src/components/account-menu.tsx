@@ -2,15 +2,19 @@ import { Building, ChevronDown, LogOut, Store } from "lucide-react";
 import { Button } from "./ui/button";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuSeparator, DropdownMenuTrigger } from "./ui/dropdown-menu";
 import { DropdownMenuLabel } from "@radix-ui/react-dropdown-menu";
-import { useQuery } from "@tanstack/react-query";
+import { useMutation, useQuery } from "@tanstack/react-query";
 import { getProfile } from "@/api/get-profile";
 import { getManagedRestaurant } from "@/api/get-managed-restaurant";
 import { Skeleton } from "./ui/skeleton";
 import { Dialog } from "./ui/dialog";
 import { DialogTrigger } from "@radix-ui/react-dialog";
 import { StoreProfileDialog } from "./store-profile-dialog";
+import { signOut } from "@/api/sign-out";
+import { useNavigate } from "react-router-dom";
 
 export function AccountMenu() {
+  const navigate = useNavigate();
+
   const {
     data: profile,
     isLoading: isLoadingProfile
@@ -27,6 +31,16 @@ export function AccountMenu() {
     queryKey: ['managed-restaurant'],
     queryFn: getManagedRestaurant,
     staleTime: Infinity
+  })
+
+  const {
+    mutateAsync: userSignOut,
+    isPending: isLoadingSignOut
+  } = useMutation({
+    mutationFn: signOut,
+    onSuccess: () => {
+      navigate('/sign-in', { replace: true });
+    }
   })
 
   return (
@@ -61,9 +75,15 @@ export function AccountMenu() {
               <span>Perfil da loja</span>
             </DropdownMenuItem>
           </DialogTrigger>
-          <DropdownMenuItem className="text-red-500 dark:text-red-400">
-            <LogOut className="mr-2 h-4 w-4 text-red-500 dark:text-red-400" />
-            <span>Sair</span>
+          <DropdownMenuItem
+            asChild
+            disabled={isLoadingSignOut}
+            className="text-red-500 dark:text-red-400"
+          >
+            <button className="w-full" onClick={() => userSignOut()}>
+              <LogOut className="mr-2 h-4 w-4 text-red-500 dark:text-red-400" />
+              <span>Sair</span>
+            </button>
           </DropdownMenuItem>
         </DropdownMenuContent>
       </DropdownMenu>

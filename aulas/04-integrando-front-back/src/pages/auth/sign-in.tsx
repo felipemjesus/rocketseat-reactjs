@@ -9,7 +9,7 @@ import { useMutation } from "@tanstack/react-query";
 import { signIn } from "@/api/sign-in";
 
 const signInForm = z.object({
-  email: z.string().email(),
+  email: z.email(),
 });
 
 type SignInForm = z.infer<typeof signInForm>;

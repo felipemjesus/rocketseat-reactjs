@@ -12,7 +12,7 @@ const signUpForm = z.object({
   restaurantName: z.string(),
   managerName: z.string(),
   phone: z.string(),
-  email: z.string().email(),
+  email: z.email(),
 });
 
 type SignUpForm = z.infer<typeof signUpForm>;
