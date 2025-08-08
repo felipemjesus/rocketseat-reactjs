@@ -34,5 +34,5 @@
     /* Vitest */
     "types": ["vitest/globals"],
   },
-  "include": ["src"]
+  "include": ["src", "test"]
 }
