@@ -5,6 +5,7 @@ import { ResponsiveContainer, LineChart, XAxis, YAxis, Line, CartesianGrid } fro
 import colors from "tailwindcss/colors";
 import { Label } from '@/components/ui/label'
 import { useMemo } from "react";
+import { Loader2 } from "lucide-react";
 
 export function RevenueChart() {
   const { data: dailyRevenueInPeriod } = useQuery({
@@ -39,7 +40,7 @@ export function RevenueChart() {
         </div>
       </CardHeader>
       <CardContent>
-        {chartData && (
+        {chartData ? (
           <ResponsiveContainer width="100%" height={240}>
             <LineChart
               style={{ fontSize: 12 }}
@@ -78,6 +79,10 @@ export function RevenueChart() {
               />
             </LineChart>
           </ResponsiveContainer>
+        ) : (
+          <div className="flex h-[240px] w-full items-center justify-center">
+            <Loader2 className="h-8 w-8 animate-spin text-muted-foreground" />
+          </div>
         )}
       </CardContent>
     </Card>
