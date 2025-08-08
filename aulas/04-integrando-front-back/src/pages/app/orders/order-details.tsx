@@ -6,6 +6,7 @@ import { DialogTitle } from "@radix-ui/react-dialog";
 import { useQuery } from "@tanstack/react-query";
 import { formatDistanceToNow } from "date-fns";
 import { ptBR } from "date-fns/locale";
+import { OrderDetailsSkeleton } from "./order-details-skeleton";
 
 export interface OrderDetailsProps {
   open: boolean
@@ -30,7 +31,7 @@ export function OrderDetails({ open, orderId }: OrderDetailsProps) {
         </DialogDescription>
       </DialogHeader>
 
-      {order && (
+      {order ? (
         <div className="space-y-4">
           <Table>
             <TableBody>
@@ -132,6 +133,8 @@ export function OrderDetails({ open, orderId }: OrderDetailsProps) {
             </TableFooter>
           </Table>
         </div>
+      ) : (
+        <OrderDetailsSkeleton />
       )}
     </DialogContent>
   );
