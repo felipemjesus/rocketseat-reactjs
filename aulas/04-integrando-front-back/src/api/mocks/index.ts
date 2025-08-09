@@ -8,6 +8,9 @@ import { getDayOrdersAmountMock } from './get-day-orders-amout-mock'
 import { getMonthRevenueMock } from './get-month-revenue-mock'
 import { getDailyRevenueInPeriodMock } from './get-daily-revenue-in-period-mock'
 import { getPopularProductsMock } from './get-popular-products-mock'
+import { getManagedRestaurantMock } from './get-managed-restaurant-mock'
+import { getProfileMock } from './get-profile-mock'
+import { updateProfileMock } from './update-profile-mock'
 
 export const worker = setupWorker(
   signInMock,
@@ -17,7 +20,10 @@ export const worker = setupWorker(
   getDayOrdersAmountMock,
   getMonthRevenueMock,
   getDailyRevenueInPeriodMock,
-  getPopularProductsMock
+  getPopularProductsMock,
+  getManagedRestaurantMock,
+  getProfileMock,
+  updateProfileMock
 )
 
 export async function enableMSW() {

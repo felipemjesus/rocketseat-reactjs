@@ -1,0 +1,16 @@
+import { http, HttpResponse } from 'msw'
+import type { GetManagedRestaurantResponse } from '../get-managed-restaurant'
+
+export const getManagedRestaurantMock = http.get<never, never, GetManagedRestaurantResponse>(
+  '/managed-restaurant',
+  async () => {
+    return HttpResponse.json({
+      id: 'custom-restaurant-id',
+      name: 'Pizza Shop LLC',
+      description: 'Lorem ipsum dolor sit amet',
+      managerId: 'custom-user-id',
+      createdAt: new Date(),
+      updatedAt: null,
+    })
+  }
+)
