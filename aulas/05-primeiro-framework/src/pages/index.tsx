@@ -1,5 +1,26 @@
+import { styled } from "@/styles";
+
+const Button = styled('button', {
+  backgroundColor: '$rocketseat',
+  borderRadius: 4,
+  border: 0,
+  padding: '1rem 2rem',
+
+  span: {
+    color: '#fff',
+    marginLeft: '0.5rem'
+  },
+
+  '&:hover': {
+    filter: 'brightness(0.9)'
+  }
+})
+
 export default function Home() {
   return (
-    <h1>Hello World</h1>
+    <Button>
+      Enviar
+      <span>teste</span>
+    </Button>
   );
 }
