@@ -1,7 +1,9 @@
 {
-  "name": "@ignite-ui/tokens",
+  "name": "@ignite-ui/react",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
   "scripts": {
     "build": "tsup src/index.ts --format esm,cjs --dts",
     "dev": "tsup src/index.ts --format esm,cjs --dts --watch"
@@ -11,6 +13,7 @@
   "license": "ISC",
   "description": "",
   "devDependencies": {
+    "@ignite-ui/tokens": "*",
     "tsup": "^8.5.0",
     "typescript": "^5.9.2"
   }
