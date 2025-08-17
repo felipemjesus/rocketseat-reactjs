@@ -1,6 +1,6 @@
 services:
   app:
-    image: node:20.17.0
+    image: node:20.19.0
     container_name: "rocketseat-reactjs"
     ports:
       - "9001:9001"
