@@ -1,4 +1,5 @@
 import type { Preview } from "@storybook/react-vite";
+import { themes } from "storybook/internal/theming";
 
 const preview: Preview = {
   parameters: {
@@ -14,6 +15,10 @@ const preview: Preview = {
       // 'error' - fail CI on a11y violations
       // 'off' - skip a11y checks entirely
       test: "todo",
+    },
+
+    docs: {
+      theme: themes.dark,
     },
   },
 };
