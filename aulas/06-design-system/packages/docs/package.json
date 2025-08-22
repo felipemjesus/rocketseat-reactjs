@@ -5,12 +5,12 @@
   "type": "module",
   "license": "MIT",
   "scripts": {
-    "dev": "vite",
-    "build": "tsc -b && vite build",
+    "vite:dev": "vite",
+    "vite:build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "storybook": "storybook dev -p 3001 --no-open",
-    "build-storybook": "storybook build"
+    "dev": "storybook dev -p 3001 --no-open",
+    "build": "storybook build"
   },
   "dependencies": {
     "@ignite-ui/eslint-config": "*",
