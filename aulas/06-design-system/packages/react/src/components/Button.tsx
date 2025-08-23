@@ -23,6 +23,10 @@ export const Button = styled('button', {
     opacity: 0.6,
   },
 
+  '&:focus': {
+    boxShadow: '0 0 0 2px $colors$ignite300',
+  },
+
   svg: {
     width: '$4',
     height: '$4',
