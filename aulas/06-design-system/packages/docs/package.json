@@ -1,5 +1,5 @@
 {
-  "name": "@ignite-ui/docs",
+  "name": "@felipemjesus-ignite-ui/docs",
   "private": true,
   "version": "1.0.0",
   "type": "module",
@@ -14,9 +14,9 @@
     "deploy": "storybook-to-ghpages"
   },
   "dependencies": {
-    "@ignite-ui/eslint-config": "*",
-    "@ignite-ui/react": "*",
-    "@ignite-ui/tokens": "*",
+    "@felipemjesus-ignite-ui/eslint-config": "*",
+    "@felipemjesus-ignite-ui/react": "*",
+    "@felipemjesus-ignite-ui/tokens": "*",
     "phosphor-react": "^1.4.1",
     "polished": "^4.3.1",
     "react": "^19.1.1",
