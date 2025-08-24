@@ -7,7 +7,9 @@ import { signIn, useSession } from 'next-auth/react'
 export default function ConnectCalendar() {
   const session = useSession()
 
-  const isConnected = session.status === 'authenticated'
+  console.log(session)
+
+  const isConnected = false // session.status === 'authenticated'
 
   return (
     <Container>
