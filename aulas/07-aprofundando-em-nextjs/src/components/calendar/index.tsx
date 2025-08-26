@@ -46,6 +46,13 @@ export function Calendar() {
               </td>
             ))}
           </tr>
+          <tr>
+            {Array.from({ length: 7 }).map((_, index) => (
+              <td key={index}>
+                <CalendarDay>{index}</CalendarDay>
+              </td>
+            ))}
+          </tr>
         </tbody>
       </CalendarBody>
     </CalendarContainer>

@@ -10,6 +10,7 @@ export const UserHeader = styled('div', {
   display: 'flex',
   flexDirection: 'column',
   alignItems: 'center',
+  marginBottom: '$6',
 
   [`> ${Heading}`]: {
     lineHeight: '$base',
