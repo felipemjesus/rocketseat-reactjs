@@ -1,5 +1,9 @@
-export function getWeekDays() {
-  return [
+interface GetWeekDaysParams {
+  short?: boolean
+}
+
+export function getWeekDays({ short = false }: GetWeekDaysParams) {
+  const weekDays = [
     'Domingo',
     'Segunda-feira',
     'Terça-feira',
@@ -8,4 +12,12 @@ export function getWeekDays() {
     'Sexta-feira',
     'Sábado',
   ]
+
+  if (short) {
+    return weekDays.map((weekDay) =>
+      weekDay.substring(0, 3).toLocaleUpperCase(),
+    )
+  }
+
+  return weekDays
 }
