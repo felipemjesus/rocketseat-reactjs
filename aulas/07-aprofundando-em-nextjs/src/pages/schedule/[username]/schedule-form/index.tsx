@@ -2,12 +2,12 @@ import CalendarStep from './calendar-step'
 import ConfirmStep from './confirm-step'
 
 export default function ScheduleForm() {
-  const isComfirm = true
+  const isConfirm = false
 
   return (
     <>
-      {!isComfirm && <CalendarStep />}
-      {isComfirm && <ConfirmStep />}
+      {!isConfirm && <CalendarStep />}
+      {isConfirm && <ConfirmStep />}
     </>
   )
 }
