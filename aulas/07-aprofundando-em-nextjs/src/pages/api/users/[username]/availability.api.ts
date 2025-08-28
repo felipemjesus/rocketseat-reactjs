@@ -1,7 +1,6 @@
 import { prisma } from '@/lib/prisma'
 import dayjs from 'dayjs'
 import type { NextApiRequest, NextApiResponse } from 'next'
-import { setCookie } from 'nookies'
 
 export default async function handler(
   req: NextApiRequest,
@@ -58,5 +57,24 @@ export default async function handler(
     return startHour + index
   })
 
-  return res.status(201).json(possibleTimes)
+  const blockedTimes = await prisma.scheduling.findMany({
+    select: {
+      date: true,
+    },
+    where: {
+      user_id: user.id,
+      date: {
+        gte: referenceDate.set('hour', startHour).toDate(),
+        lte: referenceDate.set('hour', endHour).toDate(),
+      },
+    },
+  })
+
+  const availableTimes = possibleTimes.filter((time) => {
+    return !blockedTimes.some((blockedTime) => {
+      return blockedTime.date.getHours() === time
+    })
+  })
+
+  return res.status(200).json({ availableTimes, possibleTimes })
 }
