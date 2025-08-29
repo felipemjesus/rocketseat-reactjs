@@ -3,6 +3,8 @@ import { globalStyles } from '@/styles/global'
 import type { AppProps } from 'next/app'
 import { Roboto } from 'next/font/google'
 import { SessionProvider } from 'next-auth/react'
+import { QueryClientProvider } from '@tanstack/react-query'
+import { queryClient } from '@/lib/react-query'
 
 const roboto = Roboto({
   weight: ['400', '500', '700'],
@@ -16,8 +18,10 @@ export default function App({
   pageProps: { session, ...pageProps },
 }: AppProps) {
   return (
-    <SessionProvider session={session}>
-      <Component {...pageProps} className={roboto.className} />
-    </SessionProvider>
+    <QueryClientProvider client={queryClient}>
+      <SessionProvider session={session}>
+        <Component {...pageProps} className={roboto.className} />
+      </SessionProvider>
+    </QueryClientProvider>
   )
 }
