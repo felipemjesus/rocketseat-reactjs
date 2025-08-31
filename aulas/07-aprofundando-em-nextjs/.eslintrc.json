@@ -1,4 +1,7 @@
 {
   "extends": "@rocketseat/eslint-config/react",
-  "ignorePatterns": ["*.d.ts"]
+  "ignorePatterns": ["*.d.ts"],
+  "rules": {
+    "camelcase": "off"
+  }
 }
