@@ -26,6 +26,7 @@ type CalendarWeeks = CalendarWeek[]
 
 interface BlockedDates {
   blockedWeekDays: number[]
+  blockedDates: number[]
 }
 
 interface BlockedDatesResponse {
@@ -64,14 +65,14 @@ export function Calendar({ selectedDate, onDateSelected }: CalendarProps) {
     useQuery<BlockedDatesResponse>({
       queryKey: [
         'blocked-dates',
-        currentDate.get('year'),
-        currentDate.get('month'),
+        currentDate.format('YYYY'),
+        currentDate.format('MM'),
       ],
       queryFn: () => {
         return api.get(`/users/${username}/blocked-dates`, {
           params: {
-            year: currentDate.get('year'),
-            month: currentDate.get('month'),
+            year: currentDate.format('YYYY'),
+            month: currentDate.format('MM'),
           },
         })
       },
@@ -106,9 +107,11 @@ export function Calendar({ selectedDate, onDateSelected }: CalendarProps) {
       return lastDayInCurrentMonth.add(index + 1, 'day')
     })
 
-    let blockedDatesArray: BlockedDates['blockedWeekDays'] = []
+    let blockedWeekDaysArray: BlockedDates['blockedWeekDays'] = []
+    let blockedDatesArray: BlockedDates['blockedDates'] = []
     if (isBlockedDates) {
-      blockedDatesArray = blockedDates.data.blockedWeekDays
+      blockedWeekDaysArray = blockedDates.data.blockedWeekDays
+      blockedDatesArray = blockedDates.data.blockedDates
     }
 
     const calendarDays = [
@@ -117,7 +120,8 @@ export function Calendar({ selectedDate, onDateSelected }: CalendarProps) {
         date,
         disabled:
           date.endOf('day').isBefore(new Date()) ||
-          blockedDatesArray.includes(date.get('day')),
+          blockedWeekDaysArray.includes(date.get('day')) ||
+          blockedDatesArray.includes(date.get('date')),
       })),
       ...nextMonthFillArray.map((date) => ({ date, disabled: true })),
     ]
